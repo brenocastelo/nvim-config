@@ -9,7 +9,8 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 
 Plug 'tpope/vim-fugitive'
-Plug 'ctrlpvim/ctrlp.vim'
+Plug 'junegunn/fzf'
+Plug 'jiangmiao/auto-pairs'
 call plug#end()
 
 colorscheme gruvbox
@@ -39,8 +40,11 @@ autocmd vimenter * NERDTree
 autocmd VimEnter * wincmd p
 " close file explorer when last file is closed
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
-" open directory of current file on buffer
-:NERDTree %
+
+set tabstop=2
+set softtabstop=2
+set shiftwidth=2
+set expandtab
 
 set hidden
 set number
@@ -51,4 +55,9 @@ set inccommand=split
 let mapleader="\<space>"
 nnoremap <leader>; A;<esc>
 nnoremap <leader>ev :vsplit ~/.config/nvim/init.vim<cr>
+
 nnoremap <leader>sv :source ~/.config/nvim/init.vim<cr>
+
+:nmap <c-s> :w<CR>
+:imap <c-s> <Esc>:w<CR>a
+
